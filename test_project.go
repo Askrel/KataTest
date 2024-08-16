@@ -21,10 +21,10 @@ func main() {
             
   arithmeticOperator := FindArithmeticOperator(expression, arifmeticOperators)
   resultArab, resultRome := SpliteToNumbers(expression, arithmeticOperator)
-  if resultArab != 0 {
-    fmt.Println(resultArab)
-  } else {
+  if resultArab == 0 {
     fmt.Println(resultRome)     
+  } else {
+    fmt.Println(resultArab)
   }         
 }
 
@@ -109,23 +109,24 @@ func ConverArabToRome(sumArab int) string{
   arabToRome := MapArabToRome()
   hundred := sumArab / 100
   hundredRemainder := sumArab % 100 
-  if hundredRemainder >= 90{
+  result += arabToRome[hundred * 100]
+  if hundredRemainder >= 90 {
     result += arabToRome[90] 
     hundredRemainder -= 90 
   }
  
   fifty := hundredRemainder / 50
   result += arabToRome[fifty * 50]
-  fiftyRemainder := fifty % 50
-  if hundredRemainder >= 40{
+  fiftyRemainder := hundredRemainder % 50
+  
+  if fiftyRemainder >= 40 {
     result += arabToRome[40] 
-    hundredRemainder -= 40 
+    fiftyRemainder -= 40 
   }
   
   decade := fiftyRemainder / 10
-  remainder := sumArab % 10
-  result += arabToRome[hundred * 100]
-  result += arabToRome[fifty * 50]
+  remainder := fiftyRemainder % 10  
+  
   for decade > 0 {
     result += arabToRome[10]
     decade--    
