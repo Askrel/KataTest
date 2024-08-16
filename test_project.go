@@ -109,7 +109,7 @@ func ConverArabToRome(sumArab int) string{
   arabToRome := MapArabToRome()
   hundred := sumArab / 100
   hundredRemainder := sumArab % 100 
-  if hundredRemainder > 90{
+  if hundredRemainder >= 90{
     result += arabToRome[90] 
     hundredRemainder -= 90 
   }
@@ -117,7 +117,7 @@ func ConverArabToRome(sumArab int) string{
   fifty := hundredRemainder / 50
   result += arabToRome[fifty * 50]
   fiftyRemainder := fifty % 50
-  if hundredRemainder > 40{
+  if hundredRemainder >= 40{
     result += arabToRome[40] 
     hundredRemainder -= 40 
   }
